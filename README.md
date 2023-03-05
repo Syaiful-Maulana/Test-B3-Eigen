@@ -22,6 +22,12 @@ cp .env.example .env
 npm run dev
 ```
 
+### dokumentasi
+
+```
+http://localhost:3000/docs/
+```
+
 # Algoritma
 
 ### run file example

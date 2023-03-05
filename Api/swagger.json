@@ -1,0 +1,1778 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "test eigen",
+    "contact": {},
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/v1/borrow": {
+      "post": {
+        "tags": [
+          "borrow books"
+        ],
+        "summary": "add borrow",
+        "operationId": "addborrow",
+        "parameters": [],
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/addborrowrequest"
+                  },
+                  {
+                    "example": {
+                      "member_id": 3,
+                      "book_id": 5
+                    }
+                  }
+                ]
+              },
+              "example": {
+                "member_id": 3,
+                "book_id": 5
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "185"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"b9-q4SUzxoqSZvXoTjhp8oi7Mung5I\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 05 Mar 2023 04:29:49 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/success"
+                    },
+                    {
+                      "example": {
+                        "status": true,
+                        "message": "successfully",
+                        "data": {
+                          "date_borrow": "2023-03-05T04:29:49.438Z",
+                          "date_return": "2023-03-12T04:29:49.438Z",
+                          "member_id": 1,
+                          "book_id": 4,
+                          "status": "Sedang Di Pinjam"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": true,
+                  "message": "successfully",
+                  "data": {
+                    "date_borrow": "2023-03-05T04:29:49.438Z",
+                    "date_return": "2023-03-12T04:29:49.438Z",
+                    "member_id": 1,
+                    "book_id": 4,
+                    "status": "Sedang Di Pinjam"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "63"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"3f-RL78qKSPGNijiOAA/VAbUSJ2DbQ\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 03 Mar 2023 09:06:55 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/failbookhasborrowed1"
+                    },
+                    {
+                      "example": {
+                        "status": false,
+                        "message": "book has been borrowed",
+                        "data": null
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": false,
+                  "message": "book has been borrowed",
+                  "data": null
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "80"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"50-+TTwCprxUCGUeCfunXlWcDrT9xs\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 03 Mar 2023 09:07:18 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/failmemberborrowmore1"
+                    },
+                    {
+                      "example": {
+                        "status": false,
+                        "message": "members have borrowed more than 2 books",
+                        "data": null
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": false,
+                  "message": "members have borrowed more than 2 books",
+                  "data": null
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1/borrow/{id}": {
+      "put": {
+        "tags": [
+          "borrow books"
+        ],
+        "summary": "return borrow",
+        "operationId": "returnborrow",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "51"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"33-lDDnlOEogGzIh2RydpO33K671Fo\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 03 Mar 2023 13:16:05 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/success1"
+                    },
+                    {
+                      "example": {
+                        "status": true,
+                        "message": "successfully",
+                        "data": [
+                          1
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": true,
+                  "message": "successfully",
+                  "data": [
+                    1
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "54"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"36-lCUprXpRNqwb3rMeSjaKt3IG23k\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 03 Mar 2023 13:34:11 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/failfinishborrow1"
+                    },
+                    {
+                      "example": {
+                        "status": false,
+                        "message": "finish borrow",
+                        "data": null
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": false,
+                  "message": "finish borrow",
+                  "data": null
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1/member": {
+      "get": {
+        "tags": [
+          "member"
+        ],
+        "summary": "get member",
+        "operationId": "getmember",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "406"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"196-jxYlpQ9Z57vW3rlLvm6+eHIzrdY\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 03 Mar 2023 07:56:06 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/succes"
+                    },
+                    {
+                      "example": {
+                        "status": true,
+                        "message": "success get All data!",
+                        "data": [
+                          {
+                            "id": 1,
+                            "code": "M001",
+                            "name": "Angga",
+                            "createdAt": "2023-03-03T07:34:18.998Z",
+                            "updatedAt": "2023-03-03T07:34:18.998Z"
+                          },
+                          {
+                            "id": 2,
+                            "code": "M002",
+                            "name": "Feery",
+                            "createdAt": "2023-03-03T07:34:18.998Z",
+                            "updatedAt": "2023-03-03T07:34:18.998Z"
+                          },
+                          {
+                            "id": 3,
+                            "code": "M003",
+                            "name": "Putri",
+                            "createdAt": "2023-03-03T07:34:18.998Z",
+                            "updatedAt": "2023-03-03T07:34:18.998Z"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": true,
+                  "message": "success get All data!",
+                  "data": [
+                    {
+                      "id": 1,
+                      "code": "M001",
+                      "name": "Angga",
+                      "createdAt": "2023-03-03T07:34:18.998Z",
+                      "updatedAt": "2023-03-03T07:34:18.998Z"
+                    },
+                    {
+                      "id": 2,
+                      "code": "M002",
+                      "name": "Feery",
+                      "createdAt": "2023-03-03T07:34:18.998Z",
+                      "updatedAt": "2023-03-03T07:34:18.998Z"
+                    },
+                    {
+                      "id": 3,
+                      "code": "M003",
+                      "name": "Putri",
+                      "createdAt": "2023-03-03T07:34:18.998Z",
+                      "updatedAt": "2023-03-03T07:34:18.998Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1/member/{id}": {
+      "get": {
+        "tags": [
+          "member"
+        ],
+        "summary": "get member id",
+        "operationId": "getmemberid",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "210"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"d2-Mx3Qgr2Bm2I4Y8sLtE9UFTuXHY4\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 05 Mar 2023 04:06:04 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/success2"
+                    },
+                    {
+                      "example": {
+                        "status": true,
+                        "message": "success get All data!",
+                        "data": {
+                          "Data Member": {
+                            "id": 1,
+                            "code": "M001",
+                            "name": "Angga",
+                            "createdAt": "2023-03-05T03:52:11.871Z",
+                            "updatedAt": "2023-03-05T03:52:11.871Z"
+                          },
+                          "Total Pinjam Buku": 0
+                        }
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": true,
+                  "message": "success get All data!",
+                  "data": {
+                    "Data Member": {
+                      "id": 1,
+                      "code": "M001",
+                      "name": "Angga",
+                      "createdAt": "2023-03-05T03:52:11.871Z",
+                      "updatedAt": "2023-03-05T03:52:11.871Z"
+                    },
+                    "Total Pinjam Buku": 0
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "57"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"39-1HaGvMmgvJ9cAU7CcHQOsAZzJpc\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Sun, 05 Mar 2023 04:05:20 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/notfoundmember1"
+                    },
+                    {
+                      "example": {
+                        "status": false,
+                        "message": "member not found",
+                        "data": null
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": false,
+                  "message": "member not found",
+                  "data": null
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1/book": {
+      "get": {
+        "tags": [
+          "books"
+        ],
+        "summary": "get boook",
+        "operationId": "getboook",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Express"
+                  }
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "*"
+                  }
+                }
+              },
+              "Content-Length": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "911"
+                  }
+                }
+              },
+              "ETag": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "W/\"38f-b11jVgAR47AxHS0DiW98f1/AMk8\""
+                  }
+                }
+              },
+              "Date": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "Fri, 03 Mar 2023 08:00:29 GMT"
+                  }
+                }
+              },
+              "Connection": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "keep-alive"
+                  }
+                }
+              },
+              "Keep-Alive": {
+                "content": {
+                  "text/plain": {
+                    "schema": {
+                      "type": "string"
+                    },
+                    "example": "timeout=5"
+                  }
+                }
+              }
+            },
+            "content": {
+              "application/json; charset=utf-8": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/succes1"
+                    },
+                    {
+                      "example": {
+                        "status": true,
+                        "message": "success get All data!",
+                        "data": [
+                          {
+                            "id": 1,
+                            "code": "JK-45",
+                            "title": "Harry Potter",
+                            "author": "J.K Rowling",
+                            "stock": 1,
+                            "createdAt": "2023-03-03T07:34:19.048Z",
+                            "updatedAt": "2023-03-03T07:34:19.048Z"
+                          },
+                          {
+                            "id": 2,
+                            "code": "SHR-1",
+                            "title": "A Study in Scarlet",
+                            "author": "Arthur Conan Doyle",
+                            "stock": 1,
+                            "createdAt": "2023-03-03T07:34:19.048Z",
+                            "updatedAt": "2023-03-03T07:34:19.048Z"
+                          },
+                          {
+                            "id": 3,
+                            "code": "TW-11",
+                            "title": "Twilight",
+                            "author": "Stephenie Meyer",
+                            "stock": 1,
+                            "createdAt": "2023-03-03T07:34:19.048Z",
+                            "updatedAt": "2023-03-03T07:34:19.048Z"
+                          },
+                          {
+                            "id": 4,
+                            "code": "HOB-83",
+                            "title": "The Hobbit, or There and Back Again",
+                            "author": "J.R.R. Tolkien",
+                            "stock": 1,
+                            "createdAt": "2023-03-03T07:34:19.048Z",
+                            "updatedAt": "2023-03-03T07:34:19.048Z"
+                          },
+                          {
+                            "id": 5,
+                            "code": "NRN-7",
+                            "title": "The Lion, the Witch and the Wardrobe",
+                            "author": "C.S. Lewis",
+                            "stock": 1,
+                            "createdAt": "2023-03-03T07:34:19.048Z",
+                            "updatedAt": "2023-03-03T07:34:19.048Z"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                },
+                "example": {
+                  "status": true,
+                  "message": "success get All data!",
+                  "data": [
+                    {
+                      "id": 1,
+                      "code": "JK-45",
+                      "title": "Harry Potter",
+                      "author": "J.K Rowling",
+                      "stock": 1,
+                      "createdAt": "2023-03-03T07:34:19.048Z",
+                      "updatedAt": "2023-03-03T07:34:19.048Z"
+                    },
+                    {
+                      "id": 2,
+                      "code": "SHR-1",
+                      "title": "A Study in Scarlet",
+                      "author": "Arthur Conan Doyle",
+                      "stock": 1,
+                      "createdAt": "2023-03-03T07:34:19.048Z",
+                      "updatedAt": "2023-03-03T07:34:19.048Z"
+                    },
+                    {
+                      "id": 3,
+                      "code": "TW-11",
+                      "title": "Twilight",
+                      "author": "Stephenie Meyer",
+                      "stock": 1,
+                      "createdAt": "2023-03-03T07:34:19.048Z",
+                      "updatedAt": "2023-03-03T07:34:19.048Z"
+                    },
+                    {
+                      "id": 4,
+                      "code": "HOB-83",
+                      "title": "The Hobbit, or There and Back Again",
+                      "author": "J.R.R. Tolkien",
+                      "stock": 1,
+                      "createdAt": "2023-03-03T07:34:19.048Z",
+                      "updatedAt": "2023-03-03T07:34:19.048Z"
+                    },
+                    {
+                      "id": 5,
+                      "code": "NRN-7",
+                      "title": "The Lion, the Witch and the Wardrobe",
+                      "author": "C.S. Lewis",
+                      "stock": 1,
+                      "createdAt": "2023-03-03T07:34:19.048Z",
+                      "updatedAt": "2023-03-03T07:34:19.048Z"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/v1": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "welcome",
+        "operationId": "welcome",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "addborrowrequest": {
+        "title": "addborrowrequest",
+        "required": [
+          "member_id",
+          "book_id"
+        ],
+        "type": "object",
+        "properties": {
+          "member_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "book_id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "member_id": 3,
+          "book_id": 5
+        }
+      },
+      "failbookhasborrowed1": {
+        "title": "failbookhasborrowed1",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "status": false,
+          "message": "book has been borrowed",
+          "data": null
+        }
+      },
+      "failmemberborrowmore1": {
+        "title": "failmemberborrowmore1",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "status": false,
+          "message": "members have borrowed more than 2 books",
+          "data": null
+        }
+      },
+      "faildihukum1": {
+        "title": "faildihukum1",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "status": false,
+          "message": "members are being punished",
+          "data": null
+        }
+      },
+      "success": {
+        "title": "success",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Data"
+          }
+        },
+        "example": {
+          "status": true,
+          "message": "successfully",
+          "data": {
+            "date_borrow": "2023-03-05T04:29:49.438Z",
+            "date_return": "2023-03-12T04:29:49.438Z",
+            "member_id": 1,
+            "book_id": 4,
+            "status": "Sedang Di Pinjam"
+          }
+        }
+      },
+      "Data": {
+        "title": "Data",
+        "required": [
+          "date_borrow",
+          "date_return",
+          "member_id",
+          "book_id",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "date_borrow": {
+            "type": "string"
+          },
+          "date_return": {
+            "type": "string"
+          },
+          "member_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "book_id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "date_borrow": "2023-03-05T04:29:49.438Z",
+          "date_return": "2023-03-12T04:29:49.438Z",
+          "member_id": 1,
+          "book_id": 4,
+          "status": "Sedang Di Pinjam"
+        }
+      },
+      "success1": {
+        "title": "success1",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "status": true,
+          "message": "successfully",
+          "data": [
+            1
+          ]
+        }
+      },
+      "failfinishborrow1": {
+        "title": "failfinishborrow1",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "status": false,
+          "message": "finish borrow",
+          "data": null
+        }
+      },
+      "succes": {
+        "title": "succes",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Data1"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "status": true,
+          "message": "success get All data!",
+          "data": [
+            {
+              "id": 1,
+              "code": "M001",
+              "name": "Angga",
+              "createdAt": "2023-03-03T07:34:18.998Z",
+              "updatedAt": "2023-03-03T07:34:18.998Z"
+            },
+            {
+              "id": 2,
+              "code": "M002",
+              "name": "Feery",
+              "createdAt": "2023-03-03T07:34:18.998Z",
+              "updatedAt": "2023-03-03T07:34:18.998Z"
+            },
+            {
+              "id": 3,
+              "code": "M003",
+              "name": "Putri",
+              "createdAt": "2023-03-03T07:34:18.998Z",
+              "updatedAt": "2023-03-03T07:34:18.998Z"
+            }
+          ]
+        }
+      },
+      "Data1": {
+        "title": "Data1",
+        "required": [
+          "id",
+          "code",
+          "name",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 1,
+          "code": "M001",
+          "name": "Angga",
+          "createdAt": "2023-03-03T07:34:18.998Z",
+          "updatedAt": "2023-03-03T07:34:18.998Z"
+        }
+      },
+      "notfoundmember1": {
+        "title": "notfoundmember1",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "example": {
+          "status": false,
+          "message": "member not found",
+          "data": null
+        }
+      },
+      "success2": {
+        "title": "success2",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Data2"
+          }
+        },
+        "example": {
+          "status": true,
+          "message": "success get All data!",
+          "data": {
+            "Data Member": {
+              "id": 1,
+              "code": "M001",
+              "name": "Angga",
+              "createdAt": "2023-03-05T03:52:11.871Z",
+              "updatedAt": "2023-03-05T03:52:11.871Z"
+            },
+            "Total Pinjam Buku": 0
+          }
+        }
+      },
+      "Data2": {
+        "title": "Data2",
+        "required": [
+          "Data Member",
+          "Total Pinjam Buku"
+        ],
+        "type": "object",
+        "properties": {
+          "Data Member": {
+            "$ref": "#/components/schemas/DataMember"
+          },
+          "Total Pinjam Buku": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "example": {
+          "Data Member": {
+            "id": 1,
+            "code": "M001",
+            "name": "Angga",
+            "createdAt": "2023-03-05T03:52:11.871Z",
+            "updatedAt": "2023-03-05T03:52:11.871Z"
+          },
+          "Total Pinjam Buku": 0
+        }
+      },
+      "DataMember": {
+        "title": "DataMember",
+        "required": [
+          "id",
+          "code",
+          "name",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "code": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 1,
+          "code": "M001",
+          "name": "Angga",
+          "createdAt": "2023-03-05T03:52:11.871Z",
+          "updatedAt": "2023-03-05T03:52:11.871Z"
+        }
+      },
+      "succes1": {
+        "title": "succes1",
+        "required": [
+          "status",
+          "message",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Data3"
+            },
+            "description": ""
+          }
+        },
+        "example": {
+          "status": true,
+          "message": "success get All data!",
+          "data": [
+            {
+              "id": 1,
+              "code": "JK-45",
+              "title": "Harry Potter",
+              "author": "J.K Rowling",
+              "stock": 1,
+              "createdAt": "2023-03-03T07:34:19.048Z",
+              "updatedAt": "2023-03-03T07:34:19.048Z"
+            },
+            {
+              "id": 2,
+              "code": "SHR-1",
+              "title": "A Study in Scarlet",
+              "author": "Arthur Conan Doyle",
+              "stock": 1,
+              "createdAt": "2023-03-03T07:34:19.048Z",
+              "updatedAt": "2023-03-03T07:34:19.048Z"
+            },
+            {
+              "id": 3,
+              "code": "TW-11",
+              "title": "Twilight",
+              "author": "Stephenie Meyer",
+              "stock": 1,
+              "createdAt": "2023-03-03T07:34:19.048Z",
+              "updatedAt": "2023-03-03T07:34:19.048Z"
+            },
+            {
+              "id": 4,
+              "code": "HOB-83",
+              "title": "The Hobbit, or There and Back Again",
+              "author": "J.R.R. Tolkien",
+              "stock": 1,
+              "createdAt": "2023-03-03T07:34:19.048Z",
+              "updatedAt": "2023-03-03T07:34:19.048Z"
+            },
+            {
+              "id": 5,
+              "code": "NRN-7",
+              "title": "The Lion, the Witch and the Wardrobe",
+              "author": "C.S. Lewis",
+              "stock": 1,
+              "createdAt": "2023-03-03T07:34:19.048Z",
+              "updatedAt": "2023-03-03T07:34:19.048Z"
+            }
+          ]
+        }
+      },
+      "Data3": {
+        "title": "Data3",
+        "required": [
+          "id",
+          "code",
+          "title",
+          "author",
+          "stock",
+          "createdAt",
+          "updatedAt"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "code": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "stock": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "id": 1,
+          "code": "JK-45",
+          "title": "Harry Potter",
+          "author": "J.K Rowling",
+          "stock": 1,
+          "createdAt": "2023-03-03T07:34:19.048Z",
+          "updatedAt": "2023-03-03T07:34:19.048Z"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "borrow books"
+    },
+    {
+      "name": "member"
+    },
+    {
+      "name": "books"
+    },
+    {
+      "name": "Misc",
+      "description": ""
+    }
+  ]
+}
